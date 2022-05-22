@@ -22,7 +22,7 @@ advs.forEach(item => {
 
 title.innerText = "драма";
 
-promoBG.style.cssText = 'background: url("../img/bg.jpg") center (center / cover) no-repeat';
+promoBG.style.backgroundImage = 'url("../img/bg.jpg")';
 
 for ( let item of promoInteractiveItems ) {
     item.remove();
