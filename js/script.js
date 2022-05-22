@@ -12,13 +12,19 @@ let personalMovieDB = {
 
 let movies = {}
 
-let getFilm = '';
-let getResume = '';
+let getFilm = '',
+    getResume = '';
+
+console.log(getFilm.length);
 
 for (let i = 0; i <= 1; i++) {
-    getFilm = prompt("Один из последних просмотренных филмов?");
-    getResume = prompt("На сколько оцените его?");
+    while (getFilm.length >= 50 || getFilm.length == 0) {
+        getFilm = prompt("Один из последних просмотренных филмов?");
+    }
+    getResume = +prompt("На сколько оцените его?");
     personalMovieDB.movies[`${getFilm}`] = `${getResume}`;
+    getFilm = '';
+    getResume = '';
 }
 
 console.log(personalMovieDB);
