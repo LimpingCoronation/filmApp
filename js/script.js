@@ -2,6 +2,19 @@
 
 let numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
 
+if (numberOfFilms < 10) {
+    alert("Просмотрено довольно мало филмов");
+} 
+else if (numberOfFilms >= 10 && numberOfFilms <= 30) {
+    alert("Вы классический зритель");
+}
+else if (numberOfFilms > 30) {
+    alert("Вы киноман!");
+}
+else {
+    alert("Произошла ошибка");
+}
+
 let personalMovieDB = {
     count: numberOfFilms,
     movies: {},
@@ -14,8 +27,6 @@ let movies = {}
 
 let getFilm = '',
     getResume = '';
-
-console.log(getFilm.length);
 
 for (let i = 0; i <= 1; i++) {
     while (getFilm.length >= 50 || getFilm.length == 0) {
