@@ -4,10 +4,23 @@ let numberOfFilms = +prompt("Сколько фильмов вы уже посм�
 
 let personalMovieDB = {
     count: numberOfFilms,
-    movies: null,
-    actors: null,
+    movies: {},
+    actors: {},
     genres: [],
     privat: false,
 }
 
+let movies = {}
 
+let getFilm = prompt("Один из последних просмотренных филмов?");
+let getResume = prompt("На сколько оцените его?");
+
+movies[`${getFilm}`] = `${getResume}`;
+
+getFilm = prompt("Один из последних просмотренных филмов?");
+getResume = prompt("На сколько оцените его?");
+
+movies[`${getFilm}`] = `${getResume}`;
+
+console.log(personalMovieDB);
+console.log(movies);
