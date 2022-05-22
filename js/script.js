@@ -1,75 +1,70 @@
 "use strict";
 
-let numberOfFilms;
-
-function getCountOfFilms() {
-    while ( numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms) ) {
-        numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
-    }
-}
-
-getCountOfFilms() ;
-
-function detectPersonalLevel() {
-    if (numberOfFilms < 10) {
-        alert("Просмотрено довольно мало филмов");
-    } 
-    else if (numberOfFilms >= 10 && numberOfFilms <= 30) {
-        alert("Вы классический зритель");
-    }
-    else if (numberOfFilms > 30) {
-        alert("Вы киноман!");
-    }
-    else {
-        alert("Произошла ошибка");
-    }
-}
-
-detectPersonalLevel();
-
 let personalMovieDB = {
-    count: numberOfFilms,
+    count: null,
     movies: {},
     actors: {},
     genres: [],
     privat: false,
-}
-
-let movies = {}
-
-function rememberFilms() {
-    for (let i = 0; i <= 1; i++) {
-        let getFilm = prompt("Один из последних просмотренных филмов?"),
-            getResume = +prompt("На сколько оцените его?");
-        
-        while (((getFilm.length >= 50 || getFilm.length == 0) || getFilm == null || getResume == null ||
-         getResume > 10 || getResume <= 0 ||
-         getResume == '' || getFilm == '') == true) {
-            getFilm = prompt("Один из последних просмотренных филмов?");
-            getResume = +prompt("На сколько оцените его?");
+    numberOfFilms: null,
+    getCountOfFilms: function() {
+        while ( this.count == null || this.count == '' || isNaN(this.count) ) {
+            this.count = +prompt("Сколько фильмов вы уже посмотрели?");
         }
-        personalMovieDB.movies[`${getFilm}`] = `${getResume}`;
-    }
-}
-
-rememberFilms();
-
-function writeYourGenres() {
-    for (let i = 1; i < 4; i++) {
-        let genre;
-        while ( genre == null || genre == '' ) {
-            genre = prompt(`Ваш любимый жанр под номером ${i}:`);
+    },
+    detectPersonalLevel: function() {
+        if (this.count < 10) {
+            alert("Просмотрено довольно мало филмов");
+        } 
+        else if (this.count >= 10 && this.count <= 30) {
+            alert("Вы классический зритель");
         }
-        personalMovieDB.genres.push(genre);
-    }
+        else if (this.count > 30) {
+            alert("Вы киноман!");
+        }
+        else {
+            alert("Произошла ошибка");
+        }
+    },
+    rememberFilms: function() {
+        for (let i = 0; i <= 1; i++) {
+            let getFilm = prompt("Один из последних просмотренных филмов?"),
+                getResume = +prompt("На сколько оцените его?");
+            
+            while (((getFilm.length >= 50 || getFilm.length == 0) || getFilm == null || getResume == null ||
+             getResume > 10 || getResume <= 0 ||
+             getResume == '' || getFilm == '') == true) {
+                getFilm = prompt("Один из последних просмотренных филмов?");
+                getResume = +prompt("На сколько оцените его?");
+            }
+            this.movies[`${getFilm}`] = `${getResume}`;
+        }
+    },
+    writeYourGenres: function() {
+        for (let i = 1; i < 4; i++) {
+            let genre;
+            while ( genre == null || genre == '' ) {
+                genre = prompt(`Ваш любимый жанр под номером ${i}:`);
+            }
+            this.genres.push(genre);
+        }
+        this.genres.forEach(function(item, i) {
+            console.log(`Любимый жанр #${i} - это ${item}`);
+        });
+    },
+    showMyDB: function() {
+        if ( !this.privat ) {
+            console.log(this);
+        }
+    },
+    toggleVisibleMyDB: function() {
+        ( this.privat == false ) ? this.privat = true : this.privat = false
+    },
 }
 
-writeYourGenres();
-
-function showMyDB() {
-    if ( !personalMovieDB.privat ) {
-        console.log(personalMovieDB);
-    }
-}
-
-showMyDB()
+// personalMovieDB.getCountOfFilms();
+// personalMovieDB.detectPersonalLevel();
+// personalMovieDB.rememberFilms();
+// personalMovieDB.writeYourGenres();
+// personalMovieDB.toggleVisibleMyDB();
+// personalMovieDB.showMyDB();
