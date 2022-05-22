@@ -15,12 +15,11 @@ let movies = {}
 let getFilm = prompt("Один из последних просмотренных филмов?");
 let getResume = prompt("На сколько оцените его?");
 
-movies[`${getFilm}`] = `${getResume}`;
+personalMovieDB.movies[`${getFilm}`] = `${getResume}`;
 
 getFilm = prompt("Один из последних просмотренных филмов?");
 getResume = prompt("На сколько оцените его?");
 
-movies[`${getFilm}`] = `${getResume}`;
+personalMovieDB.movies[`${getFilm}`] = `${getResume}`;
 
 console.log(personalMovieDB);
-console.log(movies);
